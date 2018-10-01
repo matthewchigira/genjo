@@ -17,6 +17,34 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* Mixins */
+@mixin box_sizing {
+  moz-box-sizing: border-box;
+  webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* General */
+
 .center {
   text-align: center;
+}
+
+/* Typography */
+
+h1 {
+  text-align: center;
+}
+
+/* Forms */
+
+input, textarea, select, .uneditable-input {
+  width: 100%; 
+  margin-bottom: 15px; 
+  @include box_sizing;
+}
+
+/* Misc */
+.debug_dump {
+  clear: both;
 }

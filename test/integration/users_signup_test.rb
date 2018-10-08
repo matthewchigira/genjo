@@ -26,7 +26,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     get signup_path
 
     # Fill in form with valid information
-    assert_difference 'User.count' do
+    assert_difference 'User.count', 1 do
       post signup_path, params: { user: { name: "Example User",
                                           email: "user@example.com",
                                           password: "password",
@@ -36,7 +36,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     # Ensure that the home page was loaded, which means it worked
     follow_redirect!
     assert_template 'site/home' 
-                                          
+
   end
 
 end

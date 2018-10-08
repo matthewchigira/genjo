@@ -44,6 +44,10 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
+form {
+  margin-bottom: 15px;
+}
+
 /* Misc */
 .debug_dump {
   clear: both;

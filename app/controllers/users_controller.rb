@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def show
-
+    @user = User.find(params[:id])
   end
 
   def update
@@ -44,7 +44,8 @@ class UsersController < ApplicationController
   end
   
   private
-
+    
+    # For security reasons, only allow these page parameters
     def user_params
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)

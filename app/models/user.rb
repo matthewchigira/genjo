@@ -17,6 +17,15 @@ class User < ApplicationRecord
   validates :password, presence: true, length: {minimum: 6, maximum: 25 },
                     allow_nil: true
 
+  # Create a hashed value (digest) from a given string
+  def User.create_digest(input)
+    # Use a low cost in Testing, but a higher, more secure cost in Production 
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(input, cost: cost)
+    
+  end
+
   private
 
     # Automatically downcase email addresses before they are saved, so that we

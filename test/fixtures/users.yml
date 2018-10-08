@@ -1,21 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  email: MyString
-  password_digest: MyString
-  remember_digest: MyString
-  activation_digest: MyString
-  reset_digest: MyString
-  activated: false
-  admin: false
-  private: false
-  reset_sent_at: 2018-10-01 14:36:58
-
-two:
-  name: MyString
-  email: MyString
-  password_digest: MyString
+bob:
+  name: Bob Hoskins 
+  email: bob@hoskins.com
+  password_digest: <%= User.create_digest('password') %>
   remember_digest: MyString
   activation_digest: MyString
   reset_digest: MyString

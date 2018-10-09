@@ -80,4 +80,8 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test "token_authenticated should return false when digest is nil" do
+    assert_not @user.token_authenticated?('')
+  end
+
 end

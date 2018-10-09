@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  
+  attr_accessor :remember_token
+
   # Register callback methods 
   before_save :downcase_email
 
@@ -24,6 +25,31 @@ class User < ApplicationRecord
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(input, cost: cost)
     
+  end
+
+  # Create a random string of text to be used as a token for remembering a 
+  # user's credentials, account authorization, password reset etc.
+  def User.create_token
+    SecureRandom.urlsafe_base64
+  end 
+ 
+  # Remember a user in the database for persistent sessions 
+  def remember_user
+    self.remember_token = User.create_token
+    # This updates the db record, without validation
+    update_attribute(:remember_digest, User.create_digest(remember_token)) 
+  end
+
+  # Forget a user is logged in by deleting this value in the db
+  def forget_user
+    update_attribute(:remember_digest, nil)
+  end
+    
+  # Authenticate a token against the hashed version of it in the db
+  def token_authenticated?(token)
+    return false if remember_digest.nil?  
+    # The == is overloaded here, calls is_password?
+    BCrypt::Password.new(remember_digest) == token
   end
 
   private

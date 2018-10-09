@@ -9,7 +9,9 @@ module SessionsHelper
 
   # Log the current user out
   def log_out
-    # Delete the :user_id cookie and blank out @current_user 
+    # If persistant session is being used, forget it  
+    forget(current_user) 
+    # Then delete the temporary :user_id cookie and blank out @current_user 
     session.delete(:user_id)
     @current_user = nil
   end
@@ -21,9 +23,17 @@ module SessionsHelper
 
   # Return the currently logged in user
   def current_user
-    if session[:user_id]
-      # Return logged in user, or, if null, find it
-      @current_user ||= User.find_by(id: session[:user_id])
+    # First, look for user in temporary session cookies 
+    if (user_id = session[:user_id])
+      @current_user ||= User.find_by(id: user_id)
+    # Next, look in persistantly stored cookies 
+    elsif (user_id = cookies.signed[:user_id])
+      user ||= User.find_by(id: user_id)
+      if user && user.token_authenticated?(cookies[:remember_token])
+        # Once we have the user, use temporary sessions cookies 
+        log_in user
+        @current_user = user
+      end
     end
   end
 
@@ -31,5 +41,23 @@ module SessionsHelper
   def current_user?(user)
     user.equals?(@current_user)
   end
+
+  # Remember the given user, for persistent sessions
+  def remember(user)
+    # Generate a token, and save a hash of this in the db
+    user.remember_user
+    # signed encrypts these values... 
+    cookies.permanent.signed[:user_id] = user.id
+    cookies.permanent[:remember_token] = user.remember_token
+  end
+
+  # Delete all trace of a user's persistant session from the browser and db 
+  def forget(user)
+    # Delete digest from the db
+    user.forget_user
+    # Delete the cookies from the browser
+    cookies.delete(:user_id)
+    cookies.delete(:remember_token)
+  end 
 
 end

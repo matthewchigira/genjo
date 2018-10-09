@@ -9,7 +9,8 @@ class SessionsController < ApplicationController
    
     # If we found the user, and the password is correct... 
     if user && user.authenticate(params[:session][:password])
-      log_in user 
+      log_in user
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user) 
       redirect_to user 
     else 
       # ...otherwise, render the page again with error messages displayed 
@@ -21,10 +22,8 @@ class SessionsController < ApplicationController
 
   def destroy
   
-    if logged_in?
-      log_out
-      redirect_to root_url
-    end
+    log_out if logged_in?
+    redirect_to root_url
 
   end
 

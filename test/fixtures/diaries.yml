@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2018-10-06
+  title: My First Diary
+  entry: This is my first diary entry
+  user: bob
+  created_at: <%= 2.weeks.ago %>
+
+two:
+  date: 2018-10-09
+  title: My Second Diary
+  entry: This is my second diary entry
+  user: bob
+  created_at: <%= 1.week.ago %>
+
+three:
+  date: 2018-10-11
+  title: My Third Diary
+  entry: This is my third diary entry
+  user: bob
+  created_at: <%= 4.days.ago %>
+
+four:
+  date: 2018-10-13
+  title: My Fourth Diary
+  entry: This is my fourth diary entry
+  user: bob
+  created_at: <%= Time.zone.now %>

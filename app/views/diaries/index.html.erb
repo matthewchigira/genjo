@@ -1,0 +1,12 @@
+<% provide :title, "Diary Entries" %>
+<%= will_paginate %>
+
+<ul>
+  <% @diaries.each do |d| %>
+  <li><%= d.date %></li>
+  <li><%= d.title %></li>
+  <li><%= d.entry%></li>
+  <% end %>
+</ul>
+
+<%= will_paginate %>

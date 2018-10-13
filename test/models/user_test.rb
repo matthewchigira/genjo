@@ -84,4 +84,13 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.token_authenticated?('')
   end
 
+  test "associated diaries should be destroyed" do
+    @user.save
+    @user.diaries.create!(date: Time.zone.now, title: "Delete child data",
+                          entry: "Check that this diary is deleted")
+    assert_difference 'Diary.count', -1 do
+      @user.destroy
+    end
+  end  
+
 end

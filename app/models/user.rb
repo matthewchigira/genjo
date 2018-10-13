@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+  
+  # Add database relationships 
+  has_many :diaries, dependent: :destroy
+
+  # Instance variables
   attr_accessor :remember_token
 
   # Register callback methods 

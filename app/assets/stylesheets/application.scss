@@ -72,6 +72,13 @@ form {
 
 /* Diaries */
 
+.diary-message {
+  display: block; 
+  margin-top: 100px;
+  text-align: center;
+  font-style: italic; 
+}
+
 .diaries {
   list-style: none;
   padding: 0;

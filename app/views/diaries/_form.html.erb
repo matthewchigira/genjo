@@ -1,0 +1,22 @@
+<%= form_for @diary do |f| %>
+
+  <%= render 'shared/error_messages', object: f.object %>
+      
+  <%= f.label :date %>
+  <%= f.date_field :date, 
+      value: (Date.today if yield(:title) == "New Diary"), 
+      class: "form-control" %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title, class: "form-control" %>
+
+  <%= f.label :entry, "Diary Entry" %>
+  <%= f.text_area :entry, size: '50x10', placeholder: "Enter your diary here..." , class: "form-control" %>
+      
+  <% if yield(:title) == "New Diary" %>
+    <%= f.submit "Create diary", class: "btn btn-primary" %>
+  <% else %>
+    <%= f.submit "Update diary", class: "btn btn-primary" %>
+  <% end %>
+        
+<% end %>

@@ -4,7 +4,9 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <blockquote><%= @diary.entry %></blockquote>
-    <%= link_to "Edit", edit_diary_path, class: "btn btn-primary" %>
-    <%= link_to "Cancel", diaries_path, class: "btn btn-primary" %>
+    <%= link_to "Edit", edit_diary_path, 
+                          class: "btn btn-success btn-edit-cancel" %>
+    <%= link_to "Cancel", diaries_path, 
+                          class: "btn btn-default btn-edit-cancel" %>
   </div>
 </div>

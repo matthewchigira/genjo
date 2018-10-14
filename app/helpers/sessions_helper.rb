@@ -39,7 +39,7 @@ module SessionsHelper
 
   # Is this user the current user?
   def current_user?(user)
-    user.equals?(@current_user)
+    user == @current_user
   end
 
   # Remember the given user, for persistent sessions

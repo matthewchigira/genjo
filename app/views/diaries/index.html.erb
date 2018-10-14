@@ -1,12 +1,31 @@
 <% provide :title, "Diary Entries" %>
+
+<span class="btn-new">
+  <%= link_to "New Diary", new_diary_path, class: "btn btn-success" %>
+</span> 
 <%= will_paginate %>
-
-<ul>
+<ol class="diaries">
   <% @diaries.each do |d| %>
-  <li><%= d.date %></li>
-  <li><%= d.title %></li>
-  <li><%= d.entry%></li>
-  <% end %>
-</ul>
-
+    <li>
+      <span class="diary-icon"><%= gravatar_for @user, size: 50 %></span>
+      <span class="diary-title"><%= link_to d.title, d %></span> 
+      <span class="diary-date"><%= d.date %></span>
+      <span class="diary-preview">
+        <% if d.entry.length > 200 %>
+          <%= d.entry[0..199] + "..." %>
+        <% else %> 
+          <%= d.entry %> 
+        <% end %>
+      </span>
+      <span class="diary-timestamp">
+        Posted <%= time_ago_in_words(d.created_at) %> ago  
+        <% if current_user?(User.find(d.user_id)) %> 
+          | <%= link_to "delete", d, method: :delete, class: "diary-delete",  
+                data: { confirm: "Are you sure you want to delete this " \
+                                 "diary entry?" } %>  
+        <% end %>
+      </span>
+    </li>
+ <% end %>
+ </ol>
 <%= will_paginate %>

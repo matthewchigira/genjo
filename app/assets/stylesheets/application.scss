@@ -30,6 +30,18 @@
   text-align: center;
 }
 
+.btn-new { 
+  display: block;  
+  margin-bottom: 30px; 
+  .btn {
+   float: right;
+ } 
+}
+
+.btn-edit-cancel {
+  width: 100px;
+}
+
 /* Typography */
 
 h1, h2, h3 {
@@ -55,6 +67,42 @@ form {
   span {
     margin-left: 20px;
     font-weight: normal; 
+  }
+}
+
+/* Diaries */
+
+.diaries {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0px;
+    border-bottom: 1px solid $gray-lighter;
+  }
+  .diary-icon {
+    margin-right: 10px;
+    float: left;
+  }
+  .diary-title {
+    display: block;
+    margin-left: 60px;
+  }
+  .diary-date {
+    display: block;
+    margin-left: 60px;
+    font-style: italic;
+  }
+  .diary-preview {
+    display: block;
+    margin-left: 60px;
+  }
+  .diary-timestamp {
+    display: block;
+    margin-left: 60px;
+    color: $gray-light;
+  }
+  .diary-delete {
+    color: $gray-light;
   }
 }
 

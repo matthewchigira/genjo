@@ -53,7 +53,7 @@ h1, h2, h3 {
 input, textarea, select, .uneditable-input {
   width: 100%; 
   margin-bottom: 15px;
-  resize: vertical; 
+  resize: vertical;
   @include box_sizing;
 }
 
@@ -68,6 +68,25 @@ form {
     margin-left: 20px;
     font-weight: normal; 
   }
+}
+
+.form-checkbox {
+  display: block;
+  padding: 5px 0px;
+  input {
+    width: 50%; 
+  } 
+  span {
+    margin-top: -23px;
+    display: block;
+    font-weight: bold;
+  }
+}
+
+/* Progress Bars */
+
+.progress {
+  height: 30px;
 }
 
 /* Diaries */
@@ -112,6 +131,110 @@ form {
     color: $gray-light;
   }
 }
+
+/* Targets */
+
+.target-stats {
+  text-align: center;
+  font-style: italic;
+}
+
+.target-message {
+  display: block;
+  margin-top: 100px;
+  text-align: center;
+  font-style: italic; 
+}
+
+.targets {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0px;
+    border-bottom: 1px solid $gray-lighter;
+  } 
+  .target-icon {
+    margin-right: 10px;
+    float: left;
+  }
+  .target-name {
+    display: block;
+    margin-left: 60px;
+  }
+  .progress {
+    height: 20px;
+    margin-bottom: 5px;
+  }
+  .target-steps {
+    display: block;
+    margin-left: 60px;
+    font-style: italic;
+  }
+  .target-delete {
+    display: block;
+    margin-left: 30px;
+    color: $gray-light; 
+  }
+}
+
+/* Tasks */
+
+.task-message {
+  display: block;
+  margin-top: 100px;
+  text-align: center;
+  font-style: italic; 
+}
+
+.tasks {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0px;
+    border-bottom: 1px solid $gray-lighter;
+  } 
+  .task-icon {
+    margin-right: 10px;
+    float: left;
+  }
+  .task-name {
+    display: block;
+    margin-left: 60px;
+  }
+  .task-date {
+    display: block;
+    margin-left: 60px;
+    font-style: italic;
+  }
+  .task-complete {
+    display: block;
+    margin-left:60px;
+  }
+  .task-active {
+    display: block;
+    margin-left: 60px;
+  }
+  .task-priority {
+    display: block;
+    margin-left: 60px;
+  }
+  .task-complete-icon {
+    float: right;
+    font-size: 20px;
+  }
+  .task-active-icon {
+    float: right;
+    font-size: 20px;
+  }
+  .task-delete {
+    display: block;
+    margin-left: 30px;
+    color: $gray-light; 
+  }
+}
+
+
+
 
 #session_remember_me {
   width: auto;

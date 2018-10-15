@@ -2,6 +2,8 @@ class User < ApplicationRecord
   
   # Add database relationships 
   has_many :diaries, dependent: :destroy
+  has_many :targets, dependent: :destroy
+  has_many :tasks, dependent: :destroy
 
   # Instance variables
   attr_accessor :remember_token

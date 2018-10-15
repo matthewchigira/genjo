@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181013050435) do
+ActiveRecord::Schema.define(version: 20181015065452) do
 
   create_table "diaries", force: :cascade do |t|
     t.date "date"
@@ -21,6 +21,31 @@ ActiveRecord::Schema.define(version: 20181013050435) do
     t.datetime "updated_at", null: false
     t.index ["user_id", "created_at"], name: "index_diaries_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_diaries_on_user_id"
+  end
+
+  create_table "targets", force: :cascade do |t|
+    t.text "name"
+    t.text "description"
+    t.integer "target_steps"
+    t.integer "completed_steps"
+    t.string "step_name"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_targets_on_user_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.text "name"
+    t.text "description"
+    t.date "due_date"
+    t.boolean "is_high_priority"
+    t.boolean "is_complete"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["due_date", "is_complete"], name: "index_tasks_on_due_date_and_is_complete"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

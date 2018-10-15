@@ -1,0 +1,41 @@
+<%= form_for @target do |f| %>
+  
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, placeholder: "Give the target a descriptive name",
+                         class: "form-control" %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, size: '50x4', 
+                                placeholder: "Enter a description of " \
+                                             "what this target is for...",
+                                class: "form-control" %>
+  
+  <%= f.label :target_steps %>                                         
+  <% if yield(:title) == "New Target" %> 
+    <%= f.number_field :target_steps, min: 1, value: 1,
+                                      class: "form-control" %>
+  <% else %>
+    <%= f.number_field :target_steps, min: 1 , class: "form-control" %>
+  <% end %>
+
+  <% if yield(:title) != "New Target" %>
+    <%= f.label :completed_steps %>
+    <%= f.number_field :completed_steps, min: 0, class: "form-control" %>
+  <% else %>
+    <%= f.hidden_field :completed_steps, value: 0 %>
+  <% end %>
+
+  <%= f.label :step_name %>
+  <%= f.text_field :step_name, placeholder: "e.g. chapters, characters, " \
+                                            "words etc.",
+                               class: "form-control" %>
+
+  <% if yield(:title) == "New Target" %>
+    <%= f.submit "Create target", class: "btn btn-primary" %> 
+  <% else %>
+    <%= f.submit "Update target", class: "btn btn-primary" %>
+  <% end %>
+
+<% end %>

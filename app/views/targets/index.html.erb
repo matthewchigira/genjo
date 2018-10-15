@@ -1,0 +1,34 @@
+<% provide :title, "Targets" %>
+
+<span class="btn-new">
+  <%= link_to "New Target", new_target_path, class: "btn btn-success" %>
+</span>
+<% if @targets.length == 0 %>
+  <span class="target-message">
+    It looks like you don't have any targets yet. Why not
+    <% link_to "create one now?", new_target_path %>
+  </span>
+<% end %>
+<%= will_paginate %>
+<ol class="targets">
+  <% @targets.each do |t| %>
+    <li>
+      <span class="target-icon"><%= gravatar_for @user, size: 50 %></span>
+      <span class="target-name"><%= link_to t.name, t %></span>
+      <span class="target-steps"><%= generate_message(t.id)  %></span>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" 
+        style="<%= "width: " + calculate_percentage(t.id) + "%;" %>">
+        </div>
+      </div>
+      <span class="target-delete">
+        <% if current_user?(User.find(t.user_id)) %>
+          <%= link_to "delete", t, method: :delete, class: "target-delete",
+              data: { confirm: "Are you sure you want to delete this " \
+                               "target?" } %>
+        <% end %>
+      </span>
+    </li>
+  <% end %>
+</ol>
+<%= will_paginate %>

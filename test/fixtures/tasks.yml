@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Apply for JLPT
+  description: Apply for the N2 test before December
+  due_date: 2018-11-15
+  is_high_priority: false
+  is_complete: false
+  user: bob

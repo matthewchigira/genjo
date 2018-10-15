@@ -92,5 +92,14 @@ class UserTest < ActiveSupport::TestCase
       @user.destroy
     end
   end  
-
+   
+  test "associated targets should be destroyed" do
+    @user.save
+    @user.targets.create!(name: "Test Target", description: "A Description",
+                          target_steps: 10, completed_steps: 5, 
+                          step_name: "chapters")
+    assert_difference 'Target.count', -1 do
+      @user.destroy
+    end
+  end    
 end

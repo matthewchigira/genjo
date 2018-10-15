@@ -1,0 +1,22 @@
+<% provide :title, "Show Target" %>
+<h1><%= @target.name %></h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    
+    <blockquote><%= "Target: " +  @target.description %></blockquote>
+
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" 
+      style="<%= "width: " + calculate_percentage + "%;" %>">
+      </div> 
+    </div>
+
+    <p class="target-stats"><%= generate_message %></p>
+    
+    <%= link_to "Edit", edit_target_path, 
+                        class: "btn btn-success btn-edit-cancel" %>
+    <%= link_to "Cancel", targets_path,
+                          class: "btn btn-default btn-edit-canel" %>
+
+  </div>
+</div>

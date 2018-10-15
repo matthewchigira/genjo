@@ -13,5 +13,7 @@ Rails.application.routes.draw do
 
   resources                 :users
   resources                 :diaries
+  resources                 :targets
+  resources                 :tasks
 
 end

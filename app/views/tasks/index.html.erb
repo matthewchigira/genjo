@@ -1,0 +1,42 @@
+<% provide :title, "Tasks" %>
+
+<span class="btn-new">
+  <%= link_to "New Task", new_task_path, class: "btn btn-success" %>
+</span>
+<% if @tasks.length == 0 %>
+  <span class="task-message">
+    It looks like you don't have any tasks yet. Why not
+    <% link_to "create one now?", new_task_path %>
+  </span>
+<% end %>
+<%= will_paginate %>
+<ol class="tasks">
+  <% @tasks.each do |t| %>
+    <li>
+      <span class="task-icon"><%= gravatar_for @user, size: 50 %></span>
+      <span class="task-name"><%= link_to t.name, t %></span>
+      <span class="task-date"><%= "due by " + t.due_date.to_s unless t.due_date.nil? %></span>
+      <% if t.is_complete %>
+        <span class="task-complete text-success">Task Complete</span>
+        <span class="task-complete-icon glyphicon glyphicon-check"></span>
+      <% else %>
+        <% if t.is_high_priority? %>
+          <span class="task-priority text-danger">
+            <%= "High Priority Active Task" if t.is_high_priority? && !t.is_complete? %>
+          </span>
+        <% else %>
+          <span class="task-active text-warning">Task Active</span>
+        <% end %>
+          <span class="task-active-icon glyphicon glyphicon-unchecked"></span>
+      <% end %>
+      <span class="task-delete">
+        <% if current_user?(User.find(t.user_id)) %>
+          <%= link_to "delete", t, method: :delete, class: "task-delete",
+              data: { confirm: "Are you sure you want to delete this " \
+                               "task?" } %>
+        <% end %>
+      </span>
+    </li>
+  <% end %>
+</ol>
+<%= will_paginate %>

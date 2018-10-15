@@ -1,0 +1,37 @@
+<%= form_for @task do |f| %>
+
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, placeholder: "Give the task a descriptive name", 
+                          class: "form-control" %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, size: '50x4',
+                                placeholder: "Enter a description of " \
+                                             "what the task is...",
+                                class: "form-control" %>
+
+  <%= f.label :due_date %>
+  <%= f.date_field :due_date, class: "form-control" %>
+  <%= f.label :is_high_priority, class: "form-checkbox" do %>
+    <%= f.check_box :is_high_priority %>
+    <span>High priority?</span>
+  <% end %>
+
+  <% if yield(:title) == "New Task" %>
+    <%= f.hidden_field :is_complete, value: 0 %>
+  <% else %> 
+    <%= f.label :is_complete, class: "form-checkbox" do %>
+      <%= f.check_box :is_complete %>
+        <span>Complete?</span>
+      <% end %>
+  <% end %>
+
+  <% if yield(:title) == "New Task" %>
+    <%= f.submit "Create task", class: "btn btn-primary" %>
+  <% else %>
+    <%= f.submit "Update task", class: "btn btn-primary" %>
+  <% end %>
+
+<% end %>

@@ -8,10 +8,13 @@
       class: "form-control" %>
 
   <%= f.label :title %>
-  <%= f.text_field :title, class: "form-control" %>
+  <%= f.text_field :title, placeholder: "Give the diary a descriptive title", 
+                           class: "form-control" %>
 
   <%= f.label :entry, "Diary Entry" %>
-  <%= f.text_area :entry, size: '50x10', placeholder: "Enter your diary here..." , class: "form-control" %>
+  <%= f.text_area :entry, size: '50x10', 
+                          placeholder: "Enter your diary here..." , 
+                          class: "form-control" %>
       
   <% if yield(:title) == "New Diary" %>
     <%= f.submit "Create diary", class: "btn btn-primary" %>

@@ -6,7 +6,7 @@
 <% if @targets.length == 0 %>
   <span class="target-message">
     It looks like you don't have any targets yet. Why not
-    <% link_to "create one now?", new_target_path %>
+    <%= link_to "create one now?", new_target_path %>
   </span>
 <% end %>
 <%= will_paginate %>

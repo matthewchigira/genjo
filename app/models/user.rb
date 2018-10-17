@@ -6,10 +6,11 @@ class User < ApplicationRecord
   has_many :tasks, dependent: :destroy
 
   # Instance variables
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token
 
   # Register callback methods 
   before_save :downcase_email
+  before_create :create_activation_digest
 
   # This creates two virtual fields: password and password_confirmation
   has_secure_password
@@ -39,7 +40,15 @@ class User < ApplicationRecord
   def User.create_token
     SecureRandom.urlsafe_base64
   end 
- 
+   
+  # Authenticate a token against the hashed version of it in the db
+  def token_authenticated?(token, token_type)
+    digest = send("#{token_type}_digest")
+    return false if digest.nil?  
+    # The == is overloaded here, calls is_password?
+    BCrypt::Password.new(digest) == token
+  end
+  
   # Remember a user in the database for persistent sessions 
   def remember_user
     self.remember_token = User.create_token
@@ -51,12 +60,15 @@ class User < ApplicationRecord
   def forget_user
     update_attribute(:remember_digest, nil)
   end
-    
-  # Authenticate a token against the hashed version of it in the db
-  def token_authenticated?(token)
-    return false if remember_digest.nil?  
-    # The == is overloaded here, calls is_password?
-    BCrypt::Password.new(remember_digest) == token
+  
+  # Activate a user's account
+  def activate
+    update_attribute(:activated, true)
+  end
+
+  # Send account activation email
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
   end
 
   private
@@ -65,6 +77,13 @@ class User < ApplicationRecord
     # can ensure that they remain unique in both the app and the DB
     def downcase_email
       email.downcase!
+    end
+   
+    # When a new user is created, automatically create a token and save a hash
+    # of this in the DB 
+    def create_activation_digest
+      self.activation_token = User.create_token
+      self.activation_digest = User.create_digest(activation_token)
     end
 
 end

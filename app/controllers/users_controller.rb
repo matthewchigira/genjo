@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     # Try to save the record to the database... 
     if @user.save 
       # ...save must have worked: send confirmation email and flash message 
+      @user.send_activation_email 
       flash[:success] = "To use Genjo! you must confirm your email address.
                          Please check your email inbox for your confirmation 
                          email." 

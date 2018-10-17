@@ -29,7 +29,7 @@ module SessionsHelper
     # Next, look in persistantly stored cookies 
     elsif (user_id = cookies.signed[:user_id])
       user ||= User.find_by(id: user_id)
-      if user && user.token_authenticated?(cookies[:remember_token])
+      if user && user.token_authenticated?(cookies[:remember_token], :remember)
         # Once we have the user, use temporary sessions cookies 
         log_in user
         @current_user = user

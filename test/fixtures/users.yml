@@ -7,7 +7,7 @@ bob:
   remember_digest: MyString
   activation_digest: MyString
   reset_digest: MyString
-  activated: false
+  activated: true
   admin: false
   private: false
   reset_sent_at: 2018-10-01 14:36:58

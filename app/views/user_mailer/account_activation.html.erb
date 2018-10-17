@@ -1,0 +1,10 @@
+<h1>Genjo!</h1>
+
+<p>Hi <%= @user.name %>, </p>
+
+<p>
+Welcome to Genjo! In order to activate this account, please click this link: 
+</p>
+
+<%= link_to "Activate account", 
+    edit_account_activation_url(@user.activation_token, email: @user.email) %>

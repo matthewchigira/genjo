@@ -15,5 +15,7 @@ Rails.application.routes.draw do
   resources                 :diaries
   resources                 :targets
   resources                 :tasks
+  
+  resources                 :account_activations, only: [:edit]
 
 end

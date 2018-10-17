@@ -1,0 +1,5 @@
+Hi <%= @user.name %>,
+
+Welcome to Genjo! In order to activate your account, please click this link:
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

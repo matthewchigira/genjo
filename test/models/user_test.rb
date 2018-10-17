@@ -81,7 +81,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "token_authenticated should return false when digest is nil" do
-    assert_not @user.token_authenticated?('')
+    assert_not @user.token_authenticated?('',"remember")
   end
 
   test "associated diaries should be destroyed" do

@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-
+  before_action :user_logged_in, only: [:show, :edit, :update] 
+  before_action :correct_user, only: [:show, :edit, :update]
+  
   def index
 
   end
@@ -29,7 +31,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+    @user = User.find(params[:id])
   end
 
   def show
@@ -37,7 +39,14 @@ class UsersController < ApplicationController
   end
 
   def update
-
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "User profile updated"
+      redirect_to @user 
+    else
+      # Redisplay the edit screen with errors highlighted
+      render 'edit'
+    end 
   end
 
   def destroy
@@ -52,4 +61,16 @@ class UsersController < ApplicationController
                                    :password_confirmation)
     end
 
+    def user_logged_in
+      unless logged_in?
+        flash[:danger] = "Please log in to access this page."
+        redirect_to login_url
+      end
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to root_url unless current_user?(@user)
+    end
+    
 end

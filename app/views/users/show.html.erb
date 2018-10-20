@@ -1,6 +1,26 @@
 <% provide :title, @user.name %>
-<h1>
-  <%= gravatar_for @user, size: 150 %> 
-  <%= @user.name %>
-</h1>
 
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user-info">
+      <h3> 
+        <span class="user-picture"><%= gravatar_for @user, size: 150 %></span> 
+        <span class="user-name"><%= @user.name %></span>
+      </h3>
+    </section>
+  </aside> 
+  <div class="col-md-8">
+    <h3>Diary Entries (<%= @user.diaries.count %>)</h3>
+    <% if @user.diaries.any? %>
+      <ol class="diaries">
+        <%= render @diaries %>
+      </ol>
+      <%= will_paginate @diaries %>
+    <% else %>
+      <span class="diary-message">
+        It looks like you don't have any diary enteries yet. Why not
+        <%= link_to "create one now?", new_diary_path %>
+      </span>
+    <% end %>
+  </div>
+</div>

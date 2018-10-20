@@ -1,10 +1,69 @@
-<div class="center jumbotron">
-  <h1>Welcome to Genjo!</h1>
+<% if logged_in? %>
+  
+  <div class="row">
+    
+    <aside class="col-md-3 targets-area">
+      <section class="targets-area">
+        <h3>Targets</h3>
+        <% if @user.targets.any? %>
+          <ol class="targets">
+            <%= render @targets %>
+          </ol>
+          <%= will_paginate @targets %>
+        <% else %>
+          <span class="target-message">
+            It looks like you don't have any targets yet. Why not
+            <%= link_to "create one now?", new_target_path %>
+          </span>
+        <% end %>
+      </section>
+    </aside>
+    
+    <div class="col-md-6 diaries-area">
+      <section class="">
+        <h3>Diaries</h3>
+        <% if @user.diaries.any? %>
+          <ol class="diaries">
+            <%= render @diaries %>
+          </ol>
+          <%= will_paginate @diaries %>
+        <% else %>
+          <span class="diary-message">
+            It looks like you don't have any diary entries yet. Why not
+            <%= link_to "create one now?", new_diary_path %>
+          </span>
+        <% end %> 
+      </section>
+    </div>
+   
+    <aside class="col-md-3 tasks-area">
+      <section class="tasks-area">
+        <h3>Tasks</h3>
+        <% if @user.tasks.any? %>
+          <ol class="tasks">
+            <%= render @tasks %>
+          </ol>
+          <%= will_paginate @tasks %>
+        <% else %>
+          <span class="task-message">
+            It looks like you don't have any tasks yet. Why not
+            <%= link_to "create one now?", new_task_path %>
+          </span>
+        <% end %>
+      </section>
+    </aside>
+  
+  </div>
+  
+<% else %>
+  <div class="center jumbotron">
+    <h1>Welcome to Genjo!</h1>
 
-  <h2>
-    Genjo! is a language learner's best friend, and it's designed to make 
-    the process of learning a foreign language more manageable.
-  </h2>
+    <h2>
+      Genjo! is a language learner's best friend, and it's designed to make 
+      the process of learning a foreign language more manageable.
+    </h2>
 
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
-</div>
+    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+  </div>
+<% end %>

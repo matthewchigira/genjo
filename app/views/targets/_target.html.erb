@@ -1,0 +1,18 @@
+<li>
+  <span class="target-icon glyphicon glyphicon-stats"></span>
+  <span class="target-name"><%= link_to target.name, target %></span>
+  <span class="target-steps"><%= generate_message(target.id)  %></span>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" 
+         style="<%= "width: " + calculate_percentage(target.id) + "%;" %>">
+    </div>
+  </div>
+  <span class="target-delete">
+    <% if current_user?(User.find(target.user_id)) %>
+      <%= link_to "delete", target, method: :delete, class: "target-delete",
+          data: { confirm: "Are you sure you want to delete this " \
+                           "target?" } %>
+    <% end %>
+  </span>
+</li>
+

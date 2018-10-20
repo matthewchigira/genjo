@@ -104,13 +104,41 @@ form {
   }
 }
 
+.user-info {
+  .user-picture {
+    display: block;
+    margin-bottom: 20px; 
+  }   
+  .user-name {
+    display: block;
+    padding: 10px 0px; 
+  }
+}
+
+/* Home Page */
+
+.targets-area {
+}
+
+.diaries-area {
+  border-left: 1px solid $gray-lighter;
+  border-right: 1px solid $gray-lighter;
+}
+
+.tasks-area {
+}
+
 /* Diaries */
 
 .diary-message {
   display: block; 
-  margin-top: 100px;
+  margin-top: 20px;
   text-align: center;
   font-style: italic; 
+}
+
+.diary-entry {
+  overflow: hidden;
 }
 
 .diaries {
@@ -136,6 +164,7 @@ form {
   .diary-preview {
     display: block;
     margin-left: 60px;
+    overflow: hidden;
   }
   .diary-timestamp {
     display: block;
@@ -156,7 +185,7 @@ form {
 
 .target-message {
   display: block;
-  margin-top: 100px;
+  margin-top: 20px;
   text-align: center;
   font-style: italic; 
 }
@@ -169,16 +198,19 @@ form {
     border-bottom: 1px solid $gray-lighter;
   } 
   .target-icon {
-    margin-right: 10px;
     float: left;
+    padding: 20px 0px;
+    font-size: 30px;
   }
   .target-name {
     display: block;
     margin-left: 60px;
   }
   .progress {
+    display: block; 
     height: 20px;
     margin-bottom: 5px;
+    margin-left: 60px;
   }
   .target-steps {
     display: block;
@@ -196,7 +228,7 @@ form {
 
 .task-message {
   display: block;
-  margin-top: 100px;
+  margin-top: 20px;
   text-align: center;
   font-style: italic; 
 }
@@ -209,8 +241,9 @@ form {
     border-bottom: 1px solid $gray-lighter;
   } 
   .task-icon {
-    margin-right: 10px;
     float: left;
+    padding: 20px 0px;
+    font-size: 30px;
   }
   .task-name {
     display: block;
@@ -222,7 +255,7 @@ form {
     font-style: italic;
   }
   .task-complete {
-    display: block;
+    display: block; 
     margin-left:60px;
   }
   .task-active {
@@ -233,13 +266,10 @@ form {
     display: block;
     margin-left: 60px;
   }
-  .task-complete-icon {
+  .task-status-icon {
     float: right;
     font-size: 20px;
-  }
-  .task-active-icon {
-    float: right;
-    font-size: 20px;
+    margin-top: 25px; 
   }
   .task-delete {
     display: block;

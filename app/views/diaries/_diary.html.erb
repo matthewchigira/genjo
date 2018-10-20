@@ -1,0 +1,20 @@
+<li>
+  <span class="diary-icon"><%= gravatar_for @user, size: 50 %></span>
+  <span class="diary-title"><%= link_to diary.title, diary %></span> 
+  <span class="diary-date"><%= diary.date %></span>
+  <span class="diary-preview">
+    <% if diary.entry.length > 200 %>
+      <%= diary.entry[0..199] + "..." %>
+    <% else %> 
+      <%= diary.entry %> 
+    <% end %>
+  </span>
+  <span class="diary-timestamp">
+    Posted <%= time_ago_in_words(diary.created_at) %> ago  
+           <% if current_user?(User.find(diary.user_id)) %> 
+         | <%= link_to "delete", diary, method: :delete, class: "diary-delete",  
+               data: { confirm: "Are you sure you want to delete this " \
+                                "diary entry?" } %>  
+           <% end %>
+   </span>
+</li>

@@ -6,7 +6,7 @@ bob:
   password_digest: <%= User.create_digest('password') %>
   remember_digest: MyString
   activation_digest: MyString
-  reset_digest: MyString
+  reset_digest: <%= User.create_digest('reset') %>
   activated: true
   admin: false
   private: false

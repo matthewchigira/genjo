@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :tasks, dependent: :destroy
 
   # Instance variables
-  attr_accessor :remember_token, :activation_token
+  attr_accessor :remember_token, :activation_token, :reset_token
 
   # Register callback methods 
   before_save :downcase_email
@@ -69,6 +69,23 @@ class User < ApplicationRecord
   # Send account activation email
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
+  end
+
+  # Create a password token/digest, save digest to the db
+  def create_password_reset_digest
+    self.reset_token = User.create_token
+    update_attribute(:reset_digest, User.create_digest(reset_token))
+    update_attribute(:reset_sent_at, Time.zone.now)
+  end
+  
+  # Send password reset email
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
+  end
+
+  # Password reset emails reset after 2 hours
+  def password_reset_expired?
+    reset_sent_at < (Time.now - 2.hours)
   end
 
   private

@@ -12,7 +12,7 @@ class UserMailerTest < ActionMailer::TestCase
 
   test "password_reset" do
     user = users(:bob)
-    user.activation_token = User.create_token
+    user.reset_token = User.create_token
     mail = UserMailer.password_reset(user)
     assert_equal "Genjo! Password reset", mail.subject
     assert_equal [user.email], mail.to
@@ -20,12 +20,6 @@ class UserMailerTest < ActionMailer::TestCase
   end
 
   test "account_deletion" do
-    user = users(:bob)
-    user.activation_token  = User.create_token
-    mail = UserMailer.account_deletion(user)
-    assert_equal "Genjo! Account deletion", mail.subject
-    assert_equal [user.email], mail.to
-    assert_equal ["noreply@example.com"], mail.from
   end
 
 end

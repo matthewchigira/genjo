@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :user_logged_in, only: [:show, :edit, :update] 
-  before_action :correct_user, only: [:show, :edit, :update]
+  before_action :user_logged_in, only: [:show, :edit, :update, :destroy] 
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
   
   def index
 
@@ -50,7 +50,14 @@ class UsersController < ApplicationController
   end
 
   def destroy
-
+    @user = User.find(params[:id])
+    if @user 
+      @user.create_account_deletion_digest
+      @user.send_account_deletion_email
+      flash[:info] = "Account deletion email has been sent, please check "\
+                     "your inbox"
+      redirect_to root_url
+    end
   end
   
   private

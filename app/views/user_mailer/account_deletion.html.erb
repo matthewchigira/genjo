@@ -1,5 +1,18 @@
-<h1>User#account_deletion</h1>
+<h1>Genjo! Account deletion </h1>
 
 <p>
-  <%= @greeting %>, find me in app/views/user_mailer/account_deletion.html.erb
+In order to delete you account, please click this link: 
+</p>
+
+<%= link_to "Delete account",
+  edit_account_deletion_url(@user.deletion_token, email: @user.email) %>
+
+<p>
+Please note that this account deletion process is irreversible, so please be 
+sure that you want to delete your account before proceeding.
+</p>
+
+<p>
+If it was not you who requested to delete this account, then please ignore 
+this email.
 </p>

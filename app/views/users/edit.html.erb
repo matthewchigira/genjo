@@ -24,7 +24,12 @@
       <%= f.label :password_confirmation, "Confirm Password" %>
       <%= f.password_field :password_confirmation, class: "form-control" %>
       
-      <%= link_to "Delete account", "#", class:"user-profile-link" %>
+      <%= link_to "Delete account", @user, method: :delete, 
+                   data: { confirm: 
+                           "Are you sure want to delete this account and " \
+                           "all of its associated data? This action cannot " \
+                           "be reversed." } , 
+                   class: "user-profile-link" %>
      
       <%= f.submit "Update profile", class: "btn btn-primary" %>
 

@@ -1,3 +1,11 @@
-User#account_deletion
+Genjo! Account deletion 
 
-<%= @greeting %>, find me in app/views/user_mailer/account_deletion.text.erb
+In order to delete you account, please click this link: 
+
+<%= edit_account_deletion_url(@user.deletion_token, email: @user.email) %>
+
+Please note that this account deletion process is irreversible, so please be 
+sure that you want to delete your account before proceeding.
+
+If it was not you who requested to delete this account, then please ignore 
+this email.

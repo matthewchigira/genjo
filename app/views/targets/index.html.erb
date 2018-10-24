@@ -1,8 +1,10 @@
 <% provide :title, "Targets" %>
 
-<span class="btn-new">
+<% if @targets.length != 0 %>
+  <span class="btn-new">
   <%= link_to "New Target", new_target_path, class: "btn btn-success" %>
-</span>
+  </span>
+<% end %>
 
 <h1>Targets</h1>
 

@@ -1,8 +1,10 @@
 <% provide :title, "Diary Entries" %>
 
-<span class="btn-new">
-  <%= link_to "New Diary", new_diary_path, class: "btn btn-success" %>
-</span>
+<% if @diaries.length != 0 %>
+  <span class="btn-new">
+    <%= link_to "New Diary", new_diary_path, class: "btn btn-success" %>
+  </span>
+<% end %>
 
 <h1>Diary Entries</h1>
 

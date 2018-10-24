@@ -1,8 +1,10 @@
 <% provide :title, "Tasks" %>
 
-<span class="btn-new">
+<% if @tasks.length != 0 %>
+  <span class="btn-new">
   <%= link_to "New Task", new_task_path, class: "btn btn-success" %>
-</span>
+  </span>
+<% end %>
 
 <h1>Tasks</h1>
 

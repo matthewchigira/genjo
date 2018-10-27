@@ -89,14 +89,14 @@ form {
 }
 
 .form-checkbox {
-  display: block;
-  padding: 5px 0px;
+  width: 100%;
   input {
-    width: 100%; 
+    display: block;
   } 
   span {
-    margin-top: -23px;
     display: block;
+    padding: 5px 0px;
+    margin-top: -22px;
     font-weight: bold;
   }
 }

@@ -15,7 +15,7 @@
   <%= f.label :due_date %>
   <%= f.date_field :due_date, class: "form-control" %>
   <%= f.label :is_high_priority, class: "form-checkbox" do %>
-    <%= f.check_box :is_high_priority, class: "form-conntrol" %>
+    <%= f.check_box :is_high_priority, class: "form-checkbox" %>
     <span>High priority?</span>
   <% end %>
 
@@ -23,7 +23,7 @@
     <%= f.hidden_field :is_complete, value: 0 %>
   <% else %> 
     <%= f.label :is_complete, class: "form-checkbox" do %>
-      <%= f.check_box :is_complete %>
+      <%= f.check_box :is_complete, class: "form-checkbox" %>
         <span>Complete?</span>
       <% end %>
   <% end %>

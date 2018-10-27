@@ -46,7 +46,7 @@ class DiariesController < ApplicationController
   def destroy
     Diary.find(params[:id]).destroy
     flash[:success] = "Diary entry deleted"
-    redirect_to diaries_path
+    redirect_back fallback_location: diaries_path
   end
 
   private

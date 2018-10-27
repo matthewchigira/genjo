@@ -46,7 +46,7 @@ class TargetsController < ApplicationController
   def destroy
     Target.find(params[:id]).destroy
     flash[:success] = "Target deleted"
-    redirect_to targets_path
+    redirect_back fallback_location: targets_path
   end
   
   private

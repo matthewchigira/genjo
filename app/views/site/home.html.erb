@@ -9,7 +9,7 @@
           <ol class="targets">
             <%= render @targets %>
           </ol>
-          <%= will_paginate @targets %>
+          <%= link_to "more", targets_path, class:"more-link" %>
         <% else %>
           <span class="target-message">
             It looks like you don't have any targets yet. Why not
@@ -26,7 +26,7 @@
           <ol class="diaries">
             <%= render @diaries %>
           </ol>
-          <%= will_paginate @diaries %>
+          <%= link_to "more", diaries_path, class:"more-link" %>
         <% else %>
           <span class="diary-message">
             It looks like you don't have any diary entries yet. Why not
@@ -43,7 +43,7 @@
           <ol class="tasks">
             <%= render @tasks %>
           </ol>
-          <%= will_paginate @tasks %>
+          <%= link_to "more", tasks_path, class:"more-link" %>
         <% else %>
           <span class="task-message">
             It looks like you don't have any tasks yet. Why not

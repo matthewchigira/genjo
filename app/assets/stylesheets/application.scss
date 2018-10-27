@@ -37,8 +37,24 @@
   }
 }
 
+.jumbotron {
+  background-image: url('/assets/jumbotron.jpg');
+  background-size: cover;
+}
+
+.welcome-box-icon {
+  font-size: 80px;
+  padding: 10px 0px;
+  text-align: center;
+  display: block;
+}
+
 .center {
   text-align: center;
+}
+
+.justified {
+  text-align: justify;
 }
 
 .btn-new { 
@@ -58,6 +74,11 @@
   margin-left: 50%;
   margin-right: 50%;
   color: $gray;
+}
+
+.help-image {
+  width: 100%;
+  padding: 10px 0px;
 }
 
 /* Typography */

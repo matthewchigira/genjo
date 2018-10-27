@@ -1,5 +1,5 @@
 <li>
-  <span class="diary-icon"><%= gravatar_for @user, size: 50 %></span>
+  <span class="diary-icon"><%= link_to (gravatar_for @user, size: 50), @user %></span>
   <span class="diary-title"><%= link_to diary.title, diary %></span> 
   <span class="diary-date"><%= diary.date %></span>
   <span class="diary-preview">

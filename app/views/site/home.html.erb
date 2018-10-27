@@ -59,11 +59,60 @@
   <div class="center jumbotron">
     <h1>Welcome to Genjo!</h1>
 
-    <h2>
+    <h3>
       Genjo! is a language learner's best friend, and it's designed to make 
       the process of learning a foreign language more manageable.
-    </h2>
+    </h3>
 
     <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
   </div>
+
+  <div class="row">
+    
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <p class="glyphicon glyphicon-pencil welcome-box-icon" aria-label="Diaries"></p>
+        <div class="caption">
+          <h3>Diaries</h3>
+          <p class="center">
+            Create daily diaries in your target language to help you absorb 
+            what you are learning and to serve as reminder of your progress.
+          </p>
+          <%= link_to "Learn more", help_path, class:"btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <p class="glyphicon glyphicon-stats welcome-box-icon" aria-label="Targets"></p>
+        <div class="caption">
+          <h3>Targets</h3>
+          <p class="center">
+            Create targets reflecting goals you are aiming towards, and Genjo! 
+            will render these in clear progress charts to help you visual the 
+            progress that you are making in an instant.
+          </p>
+          <%= link_to "Learn more", help_path, class:"btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <p class="glyphicon glyphicon-list-alt welcome-box-icon" aria-label="Tasks"></p>
+        <div class="caption">
+          <h3>Tasks</h3>
+          <p class="center">
+            Create a list of tasks that you need to complete to help you 
+            advance your language learning goals, and Genjo! will show you 
+            what tasks are completed and what tasks are outstanding.
+          </p>
+          <%= link_to "Learn more", help_path, class:"btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+  
 <% end %>

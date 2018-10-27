@@ -62,7 +62,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "genjo_#{Rails.env}"
   config.action_mailer.perform_caching = true
   config.action_mailer.delivery_method = :smtp
-  host = 'aqueous-crag-34572.herokuapp.com'
+  host = 'genjo-net.herokuapp.com'
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
     :address                => 'smtp.sendgrid.net',

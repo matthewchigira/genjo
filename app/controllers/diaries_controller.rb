@@ -55,7 +55,7 @@ class DiariesController < ApplicationController
     def diary_params
       params.require(:diary).permit(:date, :title, :entry)
     end
-    
+   
     # Before filters
 
     def user_logged_in

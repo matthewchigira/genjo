@@ -8,7 +8,7 @@ class AccountDeletionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user && user.token_authenticated?(params[:id], :deletion)
       user.destroy 
-      render 'show' 
+      redirect_to accountdeleted_url 
     else
       flash[:danger] = "Deletion link was invalid"
       redirect_to root_url

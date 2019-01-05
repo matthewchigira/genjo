@@ -86,7 +86,7 @@ class User < ApplicationRecord
 
   # Password reset emails reset after 2 hours
   def password_reset_expired?
-    reset_sent_at < (Time.now - 2.hours)
+    reset_sent_at < (Time.zone.now - 2.hours)
   end
 
   # Create a account deletion token/digest, save digest to the db

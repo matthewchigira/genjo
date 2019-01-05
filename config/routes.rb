@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get     '/login',           to: 'sessions#new'
   post    '/login',           to: 'sessions#create'
   delete  '/logout',          to: 'sessions#destroy'
-  post    '/accountdeleted',  to: 'account_deletions#show'
+  get     '/accountdeleted',  to: 'account_deletions#show'
 
   resources                 :users
   resources                 :diaries

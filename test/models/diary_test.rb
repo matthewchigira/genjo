@@ -16,10 +16,10 @@ class DiaryTest < ActiveSupport::TestCase
     assert_not @diary.valid?
   end
 
- test "title should be present" do
+  test "title should be present" do
     @diary.title = nil
     assert_not @diary.valid?
- end
+  end
 
   test "title should be no more than 30 characters" do
     @diary.title = "a" * 31

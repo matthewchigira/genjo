@@ -15,9 +15,9 @@ class UsersController < ApplicationController
     if @user.save 
       # ...save must have worked: send confirmation email and flash message 
       @user.send_activation_email 
-      flash[:success] = "To use Genjo! you must confirm your email address.
-                         Please check your email inbox for your confirmation 
-                         email." 
+      flash[:success] = "To use Genjo! you must confirm your email address. " \
+                        "Please check your email inbox for your confirmation " \
+                        "email." 
       redirect_to root_url
     else
       # ...save must have failed: re-render the 'new' view, showing the errors 

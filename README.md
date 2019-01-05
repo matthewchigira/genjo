@@ -1,24 +1,37 @@
-# README
+# Genjo!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the Genjo! application found at [https://www.genjo.net](http://www.genjo.net).
 
-Things you may want to cover:
+Genjo! is a language learner's best friend, and it's designed to make the 
+process of learning a foreign language more manageable.
 
-* Ruby version
+## License
 
-* System dependencies
+Genjo is open source software and is licensed under the GNU General Public 
+License v3.0. See [LICENSE.md](LICENSE.md) for more details.
 
-* Configuration
+## Getting Started
 
-* Database creation
+First of all, clone the repository and install the required gems.
 
-* Database initialization
+```
+$ bundle install --without production
+```
 
-* How to run the test suite
+Then you will need to migrate the database.
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+$ rails db:migrate
+```
 
-* Deployment instructions
+To ensure that everything worked, run the test suite.
 
-* ...
+```
+$ rails test
+```
+
+Then start the server.
+
+```
+$ rails server
+```

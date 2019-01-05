@@ -8,7 +8,7 @@ process of learning a foreign language more manageable.
 ## License
 
 Genjo is open source software and is licensed under the GNU General Public 
-License v3.0. See [LICENSE.md](LICENSE.md) for more details.
+License v3.0. See [LICENSE.md](LICENSE) for more details.
 
 ## Getting Started
 

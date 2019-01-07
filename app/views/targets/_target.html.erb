@@ -9,9 +9,12 @@
   </div>
   <span class="target-delete">
     <% if current_user?(User.find(target.user_id)) %>
-      <%= link_to "delete", target, method: :delete, class: "target-delete",
-          data: { confirm: "Are you sure you want to delete this " \
-                           "target?" } %>
+      <%= link_to "delete", 
+          target, 
+          method: :delete, 
+          class: "target-delete",
+          data: { confirm: "Are you sure you want to delete this target?" },
+          remote: true %>
     <% end %>
   </span>
 </li>

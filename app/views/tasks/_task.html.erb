@@ -2,9 +2,17 @@
   <span class="task-icon glyphicon glyphicon-list-alt"></span>
 
   <% if task.is_complete %>
-     <span class="task-status-icon glyphicon glyphicon-check"></span>
+    <%= link_to "", 
+        task_path(task.id, params: { task: { is_complete: false } }), 
+        method: :patch,
+        class: "task-status-icon glyphicon glyphicon-check", 
+        remote: true %>
   <% else %>
-      <span class="task-status-icon glyphicon glyphicon-unchecked"></span>
+     <%= link_to "", 
+        task_path(task.id, params: { task: { is_complete: true } }), 
+        method: :patch,
+        class: "task-status-icon glyphicon glyphicon-unchecked", 
+        remote: true %>
   <% end %>
 
   <span class="task-name"><%= link_to task.name, task %></span>
@@ -27,9 +35,11 @@
  
   <span class="task-delete">
     <% if current_user?(User.find(task.user_id)) %>
-      <%= link_to "delete", task, method: :delete, class: "task-delete",
-          data: { confirm: "Are you sure you want to delete this " \
-                           "task?" } %>
+      <%= link_to "delete", task, 
+        method: :delete, 
+        class: "task-delete",
+        data: { confirm: "Are you sure you want to delete this task?" }, 
+        remote: true %>
     <% end %>
   </span>
 

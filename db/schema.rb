@@ -55,9 +55,9 @@ ActiveRecord::Schema.define(version: 20181020053953) do
     t.string "remember_digest"
     t.string "activation_digest"
     t.string "reset_digest"
-    t.boolean "activated"
-    t.boolean "admin"
-    t.boolean "private"
+    t.boolean "activated", default: false
+    t.boolean "admin", default: false
+    t.boolean "private", default: false
     t.datetime "reset_sent_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

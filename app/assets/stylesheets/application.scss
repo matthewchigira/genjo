@@ -107,14 +107,15 @@ form {
 .form-checkbox {
   width: 100%;
   input {
-    display: block;
-    margin-left: 120px;
+    display: inline-block;
+    float: right;
+    width: 0%;
+    margin-top: -1px; 
   } 
   span {
-    display: block;
-    padding: 5px 0px;
-    margin-top: -22px;
-    font-weight: bold;
+    display: inline-block;
+    float: left;
+    width: 30%;
   }
 }
 

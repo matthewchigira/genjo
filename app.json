@@ -58,6 +58,7 @@
   },
   "name": "genjo",
   "scripts": {
+    "postdeploy": "bundle exec rails db:seed"
   },
   "stack": "heroku-18"
 }

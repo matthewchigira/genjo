@@ -62,8 +62,8 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "genjo_#{Rails.env}"
   config.action_mailer.perform_caching = true
   config.action_mailer.delivery_method = :smtp
-  host = if ENV[HEROKU_APP_NAME]
-           "#{ENV[HEROKU_APP_NAME]}.herokuapp.com"
+  host = if ENV["HEROKU_APP_NAME"]
+           "#{ENV["HEROKU_APP_NAME"]}.herokuapp.com"
          else
            "genjo-net.herokuapp.com"
          end

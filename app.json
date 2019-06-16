@@ -43,6 +43,12 @@
     },
     "SENDGRID_USERNAME": {
       "required": true
+    },
+    "HEROKU_APP_NAME": {
+      "required": true
+    },
+    "HEROKU_PARENT_APP_NAME": {
+      "required": true
     }
   },
   "formation": {
@@ -52,6 +58,7 @@
   },
   "name": "genjo",
   "scripts": {
+    "postdeploy": "bundle exec rails db:seed"
   },
   "stack": "heroku-18"
 }

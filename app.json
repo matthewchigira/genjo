@@ -44,12 +44,12 @@
     "SENDGRID_USERNAME": {
       "required": true
     },
-    "HEROKU_APP_NAME": {
-      "required": true
+    "ADMIN_EMAIL": {
+      "value": "admin@genjo.net"
     },
-    "HEROKU_PARENT_APP_NAME": {
-      "required": true
-    }
+    "ADMIN_PASSWORD": {
+      "value": "password"
+    }  
   },
   "formation": {
     "web": {

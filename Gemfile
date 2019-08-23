@@ -18,6 +18,7 @@ gem 'bootstrap-will_paginate',  '1.0.0'
 gem 'loofah',                   '>= 2.2.3'
 gem 'rack',                     '>= 2.0.6'
 gem 'scout_apm'
+gem 'nokogiri',                 '>= 1.10.4'
 
 group :development, :test do
   gem 'sqlite3',                '1.3.13'

@@ -17,4 +17,8 @@ class ActiveSupport::TestCase
                                           password: 'password' } }
   end
 
+  def logout
+    delete logout_path
+  end
+
 end

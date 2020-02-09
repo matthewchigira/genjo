@@ -7,6 +7,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     login(@user) 
   end
 
+  def admin_setup
+    # Ensure that the standard user is logged out first...
+    logout
+    @admin = users(:matthew)
+    login(@admin)
+  end
+
   test "should get new" do
     get new_user_path
     assert_response :success
@@ -36,4 +43,24 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
   end
 
+  test "should get user list" do
+    admin_setup
+    get users_path
+    assert_response :success
+    assert_select 'title', 'User Admin Page | Genjo!'
+    assert_not_empty @response.body
+  end
+
+  test "only admins can see the admin page" do
+    get users_path
+    assert_response :redirect
+  end
+
+  test "should destroy user (if admin)" do
+    admin_setup
+    assert_difference('User.count', -1) do
+      delete user_path(@user)
+    end
+    assert_equal "User deleted", flash[:success]
+  end
 end

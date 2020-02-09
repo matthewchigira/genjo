@@ -52,6 +52,16 @@
                   <span>Settings</span>
                 <% end %>
               </li> 
+              <% if current_user.admin == true %>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to users_path do %>
+                    <span class="glyphicon glyphicon-briefcase" aria-label="Admin">
+                    </span>
+                    <span>Admin</span>
+                  <% end %>
+                </li>
+              <% end %>
               <li class="divider"></li> 
               <li>
                 <%= link_to logout_path, method: :delete do %>

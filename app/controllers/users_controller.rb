@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
   before_action :user_logged_in, only: [:show, :edit, :update, :destroy] 
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
-  
-  def index
+  before_action :admin_user, only: [:index]
 
+  def index
+    # User admin page
+    @users = User.all.paginate(page: params[:page])
+    render 'index'
   end
 
   def create
@@ -52,12 +55,22 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    if @user 
-      @user.create_account_deletion_digest
-      @user.send_account_deletion_email
-      flash[:info] = "Account deletion email has been sent, please check "\
-                     "your inbox"
-      redirect_to root_url
+
+    # Admin users can directly delete a user
+    if current_user.admin
+      @user.destroy
+      flash[:success] = "User deleted"
+      redirect_to users_path
+
+    # Normal users can request to delete themselves
+    else
+      if @user
+        @user.create_account_deletion_digest
+        @user.send_account_deletion_email
+        flash[:info] = "Account deletion email has been sent, please check "\
+          "your inbox"
+        redirect_to root_url
+      end
     end
   end
   
@@ -78,7 +91,12 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to root_url unless current_user?(@user)
+      redirect_to root_url unless current_user?(@user) or current_user.admin
     end
-    
+
+    def admin_user
+      unless logged_in? and current_user.admin == true
+        redirect_to root_path
+      end
+    end
 end

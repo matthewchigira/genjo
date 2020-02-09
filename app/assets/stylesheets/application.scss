@@ -151,6 +151,23 @@ form {
   }
 }
 
+.user-list {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  th, td {
+    padding: 10px 0px;
+  }
+  .list-line-odd {
+    background-color: $gray-lighter;
+  }
+  .user-list-delete {
+    a {
+      color: red;
+    }
+  }
+ }
+
 /* Home Page */
 
 .targets-area {

@@ -71,6 +71,9 @@ class DiariesController < ApplicationController
 
     def correct_user
       @diary = Diary.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      logger.error "Error: #{e}"
+    ensure
       redirect_to root_url unless current_user.id == @diary.user_id
     end
 end

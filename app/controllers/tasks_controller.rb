@@ -72,6 +72,9 @@ class TasksController < ApplicationController
 
     def correct_user
       @task = Task.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      logger.error "Error: #{e}"
+    ensure
       redirect_to root_url unless current_user.id == @task.user_id
     end
 

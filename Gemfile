@@ -19,6 +19,7 @@ gem 'loofah',                   '>= 2.2.3'
 gem 'rack',                     '>= 2.0.6'
 gem 'scout_apm'
 gem 'nokogiri',                 '>= 1.10.4'
+gem 'honeybadger',              '~> 4.0'
 
 group :development, :test do
   gem 'sqlite3',                '1.3.13'

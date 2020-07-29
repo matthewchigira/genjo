@@ -4,7 +4,7 @@ class TargetTest < ActiveSupport::TestCase
 
   def setup
     @user = users(:bob)
-    @target = targets(:one)  
+    @target = targets(:kanji)
   end
 
   test "should be valid" do
@@ -64,4 +64,13 @@ class TargetTest < ActiveSupport::TestCase
     assert_not @target.valid?
   end
 
+  test "sort order must be above 0" do
+    @target.sort_order = -1
+    assert_not @target.valid?
+  end
+
+  test "sort order must not be larger than count of rows" do
+    @target.sort_order = Target.where(user_id: @target.user_id).count + 1
+    assert_not @target.valid?
+  end
 end

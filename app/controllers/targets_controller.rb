@@ -54,7 +54,7 @@ class TargetsController < ApplicationController
     # Define which parameters are allowed to passed around, for secutiry.
     def target_params
       params.require(:target).permit(:name, :description, :target_steps,
-                                     :completed_steps, :step_name)
+                                     :completed_steps, :step_name, :sort_order)
     end
     
     # Before filters

@@ -4,7 +4,7 @@ class TargetsFlowTest < ActionDispatch::IntegrationTest
  
   def setup
     @user = users(:bob)
-    @target = targets(:one)
+    @target = targets(:kanji)
     login(@user)
   end
   
@@ -28,7 +28,8 @@ class TargetsFlowTest < ActionDispatch::IntegrationTest
                                                     description: "New desc.",
                                                     target_steps: 12,
                                                     completed_steps: 6,
-                                                    step_name: "Lessons" } } 
+                                                    step_name: "Lessons",
+                                                    sort_order: 1 } }
     assert_response :redirect
     follow_redirect!
     assert_response :success

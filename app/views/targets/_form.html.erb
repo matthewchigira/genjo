@@ -32,10 +32,14 @@
                                             "words etc.",
                                class: "form-control" %>
 
+  <% if yield(:title) != "New Target" %>
+    <%= f.label :sort_order %>
+    <%= f.number_field :sort_order, min: 0, class: "form-control" %>
+  <% end %>
+
   <% if yield(:title) == "New Target" %>
     <%= f.submit "Create target", class: "btn btn-primary" %> 
   <% else %>
     <%= f.submit "Update target", class: "btn btn-primary" %>
   <% end %>
-
 <% end %>

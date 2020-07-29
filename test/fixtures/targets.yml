@@ -1,9 +1,28 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+kanji:
   name: Jouyou Kanji
   description: Learn all the Jouyou Kanji
   target_steps: 2136 
   completed_steps: 756 
   step_name: kanji
   user: bob
+  sort_order: 1
+
+jlpt:
+  name: JLPT
+  description: Pass the Japanese Language Proficiency Test
+  target_steps: 5
+  completed_steps: 3
+  step_name: levels
+  user: bob
+  sort_order: 2
+
+tobira:
+  name: Tobira
+  description: Complete the Tobira textbook
+  target_steps: 15
+  completed_steps: 8
+  step_name: chapters
+  user: bob
+  sort_order: 3

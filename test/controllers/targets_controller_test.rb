@@ -4,7 +4,7 @@ class TargetsControllerTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:bob)
-    @target = targets(:one) 
+    @target = targets(:kanji)
     login(@user)
   end
 
@@ -35,7 +35,12 @@ class TargetsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update target" do
-    patch target_url(@target), params: { target: { entry: "Different value" } }
+    patch target_url(@target), params: { target: { name: "Different value",
+                                                   description: "Different value",
+                                                   target_steps: 14,
+                                                   completed_steps: 6,
+                                                   step_name: "Different value",
+                                                   sort_order: 1 } }
     assert_redirected_to targets_path
     assert_equal "Target updated", flash[:success]
   end
